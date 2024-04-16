@@ -142,7 +142,7 @@ const fakeData = [{id: 111,
 
 <template>
   <main>
-    <DataRow v-for="row in fakeData" v-bind:row_object="row" />
+    <DataRow v-for="rowObject in fakeData" :rowObject="rowObject" />
   </main>
 
 
