@@ -1,149 +1,54 @@
 <script setup>
 import DataRow from './DataRow.vue'
+import { ref, onMounted } from 'vue'
+// http://localhost:3000/api/v1/search
 
-const fakeData = [{id: 111,
-  episode_name: "Fakey Pilot",
-  set: "1 of 1",
-  note: null,
-  still_path: null,
-  season_num: "1",
-  show_name: "Fakey",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standard), Kind(Standing Back), Kind(True)",
-  setting: "Adventure",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 112,
-  episode_name: "Fakey First",
-  set: "1 of 2",
-  note: null,
-  still_path: null,
-  season_num: "1",
-  show_name: "Fakey",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standard), Kind(Standing Back), Kind(True)",
-  setting: "Adventure",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 113,
-  episode_name: "Fakey Another",
-  set: "2 of 2",
-  note: null,
-  still_path: null,
-  season_num: "1",
-  show_name: "Fakey",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standing Back), Problem Solver, Wise",
-  setting: "Home",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 211,
-  episode_name: "Notreal Pilot",
-  set: "1 of 1",
-  note: null,
-  still_path: null,
-  season_num: "2",
-  show_name: "Notreal",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standard), Kind(Standing Back), Kind(True)",
-  setting: "Adventure",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 212,
-  episode_name: "Not real First",
-  set: "1 of 2",
-  note: null,
-  still_path: null,
-  season_num: "2",
-  show_name: "Notreal",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standard), Kind(Standing Back), Kind(True)",
-  setting: "Adventure",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 213,
-  episode_name: "Not real Another",
-  set: "2 of 2",
-  note: null,
-  still_path: null,
-  season_num: "2",
-  show_name: "Notreal",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standing Back), Problem Solver, Wise",
-  setting: "Home",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 221,
-  episode_name: "Notreal Pilot",
-  set: "1 of 1",
-  note: null,
-  still_path: null,
-  season_num: "2",
-  show_name: "Notreal",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standard), Kind(Standing Back), Kind(True)",
-  setting: "Adventure",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 222,
-  episode_name: "Not real First",
-  set: "1 of 2",
-  note: null,
-  still_path: null,
-  season_num: "2",
-  show_name: "Notreal",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standard), Kind(Standing Back), Kind(True)",
-  setting: "Adventure",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"},
- {id: 223,
-  episode_name: "Not real Another",
-  set: "2 of 2",
-  note: null,
-  still_path: null,
-  season_num: "2",
-  show_name: "Notreal",
-  img: "/needtofix",
-  website: "google.com",
-  purchase: null,
-  flatrate: null,
-  sel: "Kind(Standing Back), Problem Solver, Wise",
-  setting: "Home",
-  heads_up: "Death(non-sentient)",
-  situations: "Getting Hurt, Sharing"}]
+const searchData = ref([])
+const searchKeys = ref([])
+
+const fetchData = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/api/v1/search');
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    const data = await response.json();
+    console.log(data); // Log the response data
+    searchData.value = data;
+    searchKeys.value = Object.keys(data[0]);
+  } catch (error) {
+    console.error('Error fetching data:', error); // Log any errors
+  }
+};
+
+onMounted(fetchData)
 
 
 </script>
 
 <template>
-  <main>
-    <DataRow v-for="rowObject in fakeData" :rowObject="rowObject" />
-  </main>
+  <p> {{ searchKeys }} </p>
+
+  <!-- <main>
+    <DataRow v-for="rowObject in searchData" :key="rowObject[0].id" :rowObject="rowObject" />
+  </main> -->
+
+
+  <DataRow :rowObject="searchData" :searchKeys="searchKeys">
+    <template #column0="{ entity }">
+      {{ entity.id }}
+    </template>
+    <template #column1="{ entity }">
+      {{ entity.show_name }}
+    </template>
+    <template #column2="{ entity }">
+      {{ entity.episode_name }}
+    </template>
+    <template #column3="{ entity }">
+      {{ entity.set }}
+    </template>
+  </DataRow>
+
 
 
 </template>
