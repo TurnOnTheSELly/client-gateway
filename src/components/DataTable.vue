@@ -47,6 +47,39 @@ onMounted(fetchData)
     <template #column3="{ entity }">
       {{ entity.set }}
     </template>
+    <template #column4="{ entity }">
+      {{ entity.still_path }}
+    </template>
+    <template #column5="{ entity }">
+      {{ entity.season_num }}
+    </template>
+    <template #column6="{ entity }">
+      {{ entity.show_name }}
+    </template>
+    <template #column7="{ entity }">
+      {{  entity.img }}
+    </template>
+    <template #column8="{ entity }">
+      {{ entity.website }}
+    </template>
+    <template #column9="{ entity }">
+      {{  entity.purchase }}
+    </template>
+    <template #column10="{ entity }">
+      {{ entity.flatrate }}
+    </template>
+    <template #column11="{ entity }">
+      {{ entity.sel }}
+    </template>
+    <template #column12="{ entity }">
+      {{ entity.setting }}
+    </template>
+    <template #column13="{ entity }">
+      {{ entity.heads_up }}
+    </template>
+    <template #column14="{ entity }">
+      {{ entity.situations }}
+    </template>
   </DataRow>
 
 
