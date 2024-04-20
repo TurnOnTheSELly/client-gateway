@@ -79,7 +79,7 @@ onMounted(fetchData)
     </template>
     <template #column13="{ entity }">
       <li v-for="(heads_up, i) in entity.heads_up.split('| ')" :key="`${heads_up}-${i}`">
-      {{ heads_up }}
+        {{ heads_up }}
       </li>
     </template>
     <template #column14="{ entity }">

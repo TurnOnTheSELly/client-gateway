@@ -1,6 +1,6 @@
 <script setup>
 // import TheWelcome from '../components/TheWelcome.vue'
-import DataTable from '../components/DataTable.vue'
+import DataTable from '../components/home/DataTable.vue'
 </script>
 
 <template>
