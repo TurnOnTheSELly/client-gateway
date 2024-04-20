@@ -69,16 +69,23 @@ onMounted(fetchData)
       {{ entity.flatrate }}
     </template>
     <template #column11="{ entity }">
-      {{ entity.sel }}
+      <!-- const selString = entity.sel.split("| ") -->
+      <li v-for="(sel, i) in entity.sel.split('| ')" :key="`${sel}-${i}`">
+      {{ sel }}
+      </li>
     </template>
     <template #column12="{ entity }">
       {{ entity.setting }}
     </template>
     <template #column13="{ entity }">
-      {{ entity.heads_up }}
+      <li v-for="(heads_up, i) in entity.heads_up.split('| ')" :key="`${heads_up}-${i}`">
+      {{ heads_up }}
+      </li>
     </template>
     <template #column14="{ entity }">
-      {{ entity.situations }}
+      <li v-for="(situation, i) in entity.situations.split('| ')" :key="`${situation}-${i}`">
+        {{ situation }}
+      </li>
     </template>
   </DataRow>
 
