@@ -36,53 +36,56 @@ onMounted(fetchData)
 
   <DataRow :rowObject="searchData" :searchKeys="searchKeys">
     <template #column0="{ entity }">
-      {{ entity.id }}
+      {{ entity[searchKeys[0]] }}
     </template>
     <template #column1="{ entity }">
-      {{ entity.show_name }}
+      {{ entity[searchKeys[1]] }}
     </template>
     <template #column2="{ entity }">
-      {{ entity.episode_name }}
+      {{ entity[searchKeys[2]]}}
     </template>
     <template #column3="{ entity }">
-      {{ entity.set }}
+      {{ entity[searchKeys[3]] }}
     </template>
     <template #column4="{ entity }">
-      {{ entity.still_path }}
+      {{ entity[searchKeys[4]] }}
     </template>
     <template #column5="{ entity }">
-      {{ entity.season_num }}
+      {{ entity[searchKeys[5]] }}
     </template>
     <template #column6="{ entity }">
-      {{ entity.show_name }}
+      {{ entity[searchKeys[6]] }}
     </template>
     <template #column7="{ entity }">
-      {{  entity.img }}
+      {{  entity[searchKeys[7]] }}
     </template>
     <template #column8="{ entity }">
-      {{ entity.website }}
+      {{ entity[searchKeys[8]] }}
     </template>
     <template #column9="{ entity }">
-      {{  entity.purchase }}
+      {{  entity[searchKeys[9]] }}
     </template>
     <template #column10="{ entity }">
-      {{ entity.flatrate }}
+      {{ entity[searchKeys[10]] }}
     </template>
     <template #column11="{ entity }">
+      {{ entity[searchKeys[11]] }}
+    </template>
+    <template #column12="{ entity }">
       <!-- const selString = entity.sel.split("| ") -->
       <li v-for="(sel, i) in entity.sel.split('| ')" :key="`${sel}-${i}`">
       {{ sel }}
       </li>
     </template>
-    <template #column12="{ entity }">
-      {{ entity.setting }}
-    </template>
     <template #column13="{ entity }">
+      {{ entity[searchKeys[1]] }}
+    </template>
+    <template #column14="{ entity }">
       <li v-for="(heads_up, i) in entity.heads_up.split('| ')" :key="`${heads_up}-${i}`">
         {{ heads_up }}
       </li>
     </template>
-    <template #column14="{ entity }">
+    <template #column15="{ entity }">
       <li v-for="(situation, i) in entity.situations.split('| ')" :key="`${situation}-${i}`">
         {{ situation }}
       </li>
