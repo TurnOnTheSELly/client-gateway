@@ -34,13 +34,13 @@
 
 <style scoped>
 .header-shows {
-  background-color: var(--gold);
-  color: var(--base)
+  background-color: var(--base);
+  color: var(--gold)
 }
 .table-rows {
   /* display: inline; */
-  color: var(--base);
-  background-color: var(--iris);
+  color: var(--iris);
+  background-color: var(--overlay);
   border: 5px solid var(--foam);
   border-radius: 25px;
   /* margin: 5px;
@@ -50,7 +50,8 @@
 }
 .table-rows:nth-child(odd) {
   /* display: inline; */
-  background-color: var(--foam);
+  color: var(--foam);
+  background-color: var(--surface);
   border: 5px solid var(--foam);
   border-radius: 25px;
   /* margin: 5px;
