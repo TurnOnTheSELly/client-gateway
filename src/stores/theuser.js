@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
-  const userName = ref("Kevin")
+  const userName = ref("Not Logged In")
   const userEmail = ref(null)
   const userSub = ref(null)
   // const isLoggedIn = computed(() => userName.value != null )
@@ -12,7 +12,7 @@ export const useUserStore = defineStore('user', () => {
   // }
 
   function isLoggedIn(){
-     return userName.value != null;
+     return userName.value != "Not Logged In";
   }
 
   function setInfo(newName, newEmail, newSub) {
@@ -21,5 +21,12 @@ export const useUserStore = defineStore('user', () => {
     userSub.value = newSub
   }
 
-  return { userName, userEmail, userSub, setInfo, isLoggedIn}
+  function $reset() {
+    userName.value = "Not Logged In"
+    userEmail.value = null
+    userSub.value = null
+    console.log ("logged out")
+  }
+
+  return { userName, userEmail, userSub, setInfo, isLoggedIn, $reset}
 })

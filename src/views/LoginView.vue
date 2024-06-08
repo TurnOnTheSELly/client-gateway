@@ -11,6 +11,9 @@ let user = ref(null);
 function logout(){
   googleLogout()
   loggedIn.value = false
+  theUser.$reset()
+  console.log("hope this worked")
+  console.log(theUser.userName)
 }
 
 const callback = (response) => {
