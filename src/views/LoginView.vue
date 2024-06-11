@@ -1,12 +1,24 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { GoogleLogin, decodeCredential, googleLogout, googleOneTap } from 'vue3-google-login';
+import { ref } from 'vue';
+import { GoogleLogin, decodeCredential, googleLogout} from 'vue3-google-login';
 import { useUserStore } from '@/stores/theuser';
 // import { forceUpdate } from 'vue'
 
 const theUser = useUserStore();
 let loggedIn = ref(false);
 let user = ref(null);
+let theData = {name: "smith"};
+
+const checkLogin = (name, email, sub, service) => {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({userName: name, userEmail: email, googleSub: sub, type: service})
+  };
+  fetch("http://localhost:3000/api/v1/users", requestOptions)
+    .then(response => response.json())
+    .then(data => (theData = data));
+}
 
 function logout(){
   googleLogout()
@@ -17,16 +29,19 @@ function logout(){
 }
 
 const callback = (response) => {
-  console.log("first:")
-  console.log(loggedIn)
-  loggedIn.value = true
-  console.log("logged in:")
-  console.log(response)
-  console.log(decodeCredential(response.credential))
-  console.log("second:")
-  console.log(loggedIn)
-  user.value = decodeCredential(response.credential)
-  theUser.setInfo(user.value.name, user.value.email, user.value.sub)
+  // console.log("first:")
+  // console.log(loggedIn)
+  // loggedIn.value = true
+  // console.log("logged in:")
+  // console.log(response)
+  // console.log(decodeCredential(response.credential))
+  // console.log("second:")
+  // console.log(loggedIn)
+  let creds = decodeCredential(response.credential)
+  checkLogin(creds.name, creds.email, creds.sub, "google")
+  console.log(theData)
+  console.log(creds)
+  // theUser.setInfo(user.value.name, user.value.email, user.value.sub)
   // $forceUpdate()
 }
 
