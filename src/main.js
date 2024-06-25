@@ -1,6 +1,6 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
+import { createApp, watch } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
@@ -12,10 +12,25 @@ import vue3GoogleLogin from 'vue3-google-login';
 
 const CLIENT_ID= '379495262041-9ngd8icdbpdf4o7vbtru2suia4kibjhe.apps.googleusercontent.com'
 
-app.use(createPinia())
+const pinia = createPinia();
+
+if (localStorage.getItem("state")) {
+    pinia.state.value = JSON.parse(localStorage.getItem("state"));
+}
+
+watch(
+    pinia.state,
+    (state) => {
+        localStorage.setItem("state", JSON.stringify(state));
+    },
+    {deep: true}
+);
+
+app.use(pinia)
 app.use(router)
 app.use(vue3GoogleLogin, {
     clientId: CLIENT_ID
 })
+
 
 app.mount('#app')

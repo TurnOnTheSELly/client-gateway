@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { useUserStore } from './stores/theuser';
+
+const theUser = useUserStore();
 </script>
 
 <template>
@@ -14,6 +17,8 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink> 
         <RouterLink to="/login">Login</RouterLink>
+        
+        <RouterLink v-if= "theUser.isShowCreator" to="/test">Test</RouterLink>
         <!-- <RouterLink to="/games_teacher">Games (teacher)</RouterLink> -->
       </nav>
     </div>
