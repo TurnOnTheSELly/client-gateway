@@ -6,8 +6,7 @@ import { useUserStore } from '@/stores/theuser';
 
 const theUser = useUserStore();
 let loggedIn = ref(false);
-let user = ref(null);
-let theData = ref("Nope")
+
 
 const checkLogin = (name, email, sub, service) => {
   const requestOptions = {
@@ -42,7 +41,6 @@ const callback = (response) => {
   console.log(theUser.isLoggedIn)
   let creds = decodeCredential(response.credential)
   localStorage.setItem("name", creds.name)
-  theData.value = localStorage.getItem("name")
   checkLogin(creds.name, creds.email, creds.sub, "google")
   console.log(theUser.isLoggedIn)
 

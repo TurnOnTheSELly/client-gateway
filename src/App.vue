@@ -11,14 +11,18 @@ const theUser = useUserStore();
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="Turn on the Selly" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink> 
         <RouterLink to="/login">Login</RouterLink>
         
-        <RouterLink v-if= "theUser.isShowCreator" to="/test">Test</RouterLink>
+        <RouterLink v-if= "theUser.isShowCreator" to="/createShows">Create Shows</RouterLink>
+        <RouterLink v-if= "theUser.isSeasonCreator" to="/test">Create Seasons</RouterLink>
+        <RouterLink v-if= "theUser.isEpisodeCreator" to="/test">Create Episodes</RouterLink>
+        <RouterLink v-if= "theUser.userRole >= 3" to="/test">Change Details</RouterLink>
+        <RouterLink v-if= "theUser.userRole >= 5" to="/test">User Permissions</RouterLink>
         <!-- <RouterLink to="/games_teacher">Games (teacher)</RouterLink> -->
       </nav>
     </div>
