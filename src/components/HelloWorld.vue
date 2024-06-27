@@ -11,9 +11,7 @@ defineProps({
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+      Balance screen time with kindness in mind!
     </h3>
   </div>
 </template>
@@ -22,12 +20,16 @@ defineProps({
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
+  color: var(--foam);
   position: relative;
   top: -10px;
 }
 
 h3 {
   font-size: 1.2rem;
+  color: var(--pine);
+  font-weight: 800;
+
 }
 
 .greetings h1,
