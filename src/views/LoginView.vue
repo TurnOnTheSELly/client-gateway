@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { GoogleLogin, decodeCredential, googleLogout} from 'vue3-google-login';
-import { useUserStore } from '@/stores/theuser';
+import { useUserStore } from '@/stores/theUser';
 // import { forceUpdate } from 'vue'
 
 const theUser = useUserStore();
@@ -17,7 +17,7 @@ const checkLogin = (name, email, sub, service) => {
   fetch("http://localhost:3000/api/v1/users", requestOptions)
     .then(response => response.json())
     .then(data => (
-      theUser.setInfo(data.name, data.email, data.googleSub, data.username, data.showCreator, data.seasonCreator, data.episodeCreator, data.role)
+      theUser.setInfo(data.name, data.email, data.googleSub, data.username, data.seriesCreator, data.seasonCreator, data.episodeCreator, data.role)
     ));
 }
 

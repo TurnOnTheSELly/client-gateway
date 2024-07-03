@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
   const userUsername = ref(null)
   const isEpisodeCreator = ref(false)
   const isSeasonCreator = ref(false)
-  const isShowCreator = ref(false)
+  const isSeriesCreator = ref(false)
   const userRole = ref(0)
 
 
@@ -20,12 +20,12 @@ export const useUserStore = defineStore('user', () => {
 
 
 
-  function setInfo(newName, newEmail, newSub, newUserUsername, newIsShowCreator, newIsSeasonCreator, newIsEpisodeCreator, newUserRole) {
+  function setInfo(newName, newEmail, newSub, newUserUsername, newIsSeriesCreator, newIsSeasonCreator, newIsEpisodeCreator, newUserRole) {
     userName.value = newName
     userEmail.value = newEmail
     userSub.value = newSub
     userUsername.value = newUserUsername
-    isShowCreator.value = newIsShowCreator
+    isSeriesCreator.value = newIsSeriesCreator
     isSeasonCreator.value = newIsSeasonCreator
     isEpisodeCreator.value = newIsEpisodeCreator
     userRole.value = newUserRole
@@ -36,12 +36,12 @@ export const useUserStore = defineStore('user', () => {
     userEmail.value = null
     userSub.value = null
     userUsername.value = null
-    isShowCreator.value = false
+    isSeriesCreator.value = false
     isSeasonCreator.value = false
     isEpisodeCreator.value = false
     userRole.value = 0
     console.log ("logged out")
   }
 
-  return { userName, userEmail, userSub, setInfo, isLoggedIn, $reset, userUsername, isShowCreator, isSeasonCreator, isEpisodeCreator, userRole}
+  return { userName, userEmail, userSub, setInfo, isLoggedIn, $reset, userUsername, isSeriesCreator, isSeasonCreator, isEpisodeCreator, userRole}
 })
