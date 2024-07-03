@@ -14,6 +14,7 @@
       seriesForm.$reset()
       serviceHTTPCode.value = null
       bEHTTPCode.value = null
+      newSeriesData.value = []
     }
 
     async function createSeries() {
