@@ -3,6 +3,8 @@
     import { useSeriesFormStore } from '@/stores/seriesForm';
     import { useUserStore } from '@/stores/theUser';
 
+    const tv_service_root_url = import.meta.env.VITE_TV_SERVICE_URL
+
     const seriesForm = useSeriesFormStore();
     const theUser = useUserStore();
     const serviceHTTPCode = ref(null);
@@ -32,7 +34,7 @@
           creator_id: theUser.id
         })
       };
-      const response = await fetch("http://localhost:3000/api/v1/series", requestOptions);
+      const response = await fetch(tv_service_root_url + "api/v1/series", requestOptions);
       if (response.status == 201 ) {
         reset()
         bEHTTPCode.value = response.status
@@ -49,7 +51,7 @@
 
     async function findSeriesDetails() {
         const headers = { "Content-Type": "application/json" };
-        const response = await fetch(`http://localhost:3000/api/v1/series_services/${seriesForm.id}`, { headers })
+        const response = await fetch(tv_service_root_url + `api/v1/series_services/${seriesForm.id}`, { headers })
         if (response.status == 201) {
             const data = await response.json()
           seriesForm.name = data.name 

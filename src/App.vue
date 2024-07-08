@@ -20,10 +20,10 @@ const theUser = useUserStore();
         <!-- <RouterLink to="/games_teacher">Games (teacher)</RouterLink> -->
         <br><br><p>
           <RouterLink v-if= "theUser.isSeriesCreator" to="/createSeries">Create Shows</RouterLink>
-          <!-- <RouterLink v-if= "theUser.isSeasonCreator" to="/test">Create Seasons</RouterLink>
-          <RouterLink v-if= "theUser.isEpisodeCreator" to="/test">Create Episodes</RouterLink>
-          <RouterLink v-if= "theUser.userRole >= 3" to="/test">Change Details</RouterLink>
-          <RouterLink v-if= "theUser.userRole >= 5" to="/test">User Permissions</RouterLink> -->
+          <RouterLink v-if= "theUser.isSeasonCreator" to="/createSeason">Create Seasons</RouterLink>
+          <!-- <RouterLink v-if= "theUser.isEpisodeCreator" to="/test">Create Episodes</RouterLink> -->
+          <!-- <RouterLink v-if= "theUser.userRole >= 3" to="/test">Change Details</RouterLink> -->
+          <!-- <RouterLink v-if= "theUser.userRole >= 5" to="/test">User Permissions</RouterLink> -->
         </p>
       </nav>
     </div>
