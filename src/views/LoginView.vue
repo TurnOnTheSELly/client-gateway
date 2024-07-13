@@ -19,7 +19,7 @@ const checkLogin = (name, email, sub, service) => {
   fetch(tv_service_root_url + "api/v1/users", requestOptions)
     .then(response => response.json())
     .then(data => (
-      theUser.setInfo(data.name, data.email, data.googleSub, data.username, data.seriesCreator, data.seasonCreator, data.episodeCreator, data.role)
+      theUser.setInfo(data.id, data.name, data.email, data.googleSub, data.username, data.seriesCreator, data.seasonCreator, data.episodeCreator, data.role)
     ));
 }
 
