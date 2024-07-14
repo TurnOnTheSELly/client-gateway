@@ -10,7 +10,9 @@ const app = createApp(App)
 
 import vue3GoogleLogin from 'vue3-google-login';
 
-const CLIENT_ID= '379495262041-9ngd8icdbpdf4o7vbtru2suia4kibjhe.apps.googleusercontent.com'
+// const CLIENT_ID= '379495262041-9ngd8icdbpdf4o7vbtru2suia4kibjhe.apps.googleusercontent.com'
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
+
 
 const pinia = createPinia();
 

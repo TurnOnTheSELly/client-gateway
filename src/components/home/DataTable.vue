@@ -3,12 +3,14 @@ import DataRow from './DataRow.vue'
 import { ref, onMounted } from 'vue'
 // http://localhost:3000/api/v1/search
 
+const tv_service_root_url = import.meta.env.VITE_TV_SERVICE_URL
+
 const searchData = ref([])
 const searchKeys = ref([])
 
 const fetchData = async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/v1/search');
+    const response = await fetch(tv_service_root_url + 'api/v1/search');
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }

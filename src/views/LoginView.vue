@@ -4,6 +4,8 @@ import { GoogleLogin, decodeCredential, googleLogout} from 'vue3-google-login';
 import { useUserStore } from '@/stores/theUser';
 // import { forceUpdate } from 'vue'
 
+const tv_service_root_url = import.meta.env.VITE_TV_SERVICE_URL
+
 const theUser = useUserStore();
 let loggedIn = ref(false);
 
@@ -14,10 +16,10 @@ const checkLogin = (name, email, sub, service) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({userName: name, userEmail: email, googleSub: sub, type: service})
   };
-  fetch("http://localhost:3000/api/v1/users", requestOptions)
+  fetch(tv_service_root_url + "api/v1/users", requestOptions)
     .then(response => response.json())
     .then(data => (
-      theUser.setInfo(data.name, data.email, data.googleSub, data.username, data.seriesCreator, data.seasonCreator, data.episodeCreator, data.role)
+      theUser.setInfo(data.id, data.name, data.email, data.googleSub, data.username, data.seriesCreator, data.seasonCreator, data.episodeCreator, data.role)
     ));
 }
 

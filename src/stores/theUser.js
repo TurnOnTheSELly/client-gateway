@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
+  const userId = ref(null)
   const userName = ref("Not Logged In")
   const userEmail = ref(null)
   const userSub = ref(null)
@@ -20,7 +21,8 @@ export const useUserStore = defineStore('user', () => {
 
 
 
-  function setInfo(newName, newEmail, newSub, newUserUsername, newIsSeriesCreator, newIsSeasonCreator, newIsEpisodeCreator, newUserRole) {
+  function setInfo(newId, newName, newEmail, newSub, newUserUsername, newIsSeriesCreator, newIsSeasonCreator, newIsEpisodeCreator, newUserRole) {
+    userId.value = newId
     userName.value = newName
     userEmail.value = newEmail
     userSub.value = newSub
@@ -32,6 +34,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   function $reset() {
+    userId.value = null
     userName.value = "Not Logged In"
     userEmail.value = null
     userSub.value = null
@@ -43,5 +46,5 @@ export const useUserStore = defineStore('user', () => {
     console.log ("logged out")
   }
 
-  return { userName, userEmail, userSub, setInfo, isLoggedIn, $reset, userUsername, isSeriesCreator, isSeasonCreator, isEpisodeCreator, userRole}
+  return { userId, userName, userEmail, userSub, setInfo, isLoggedIn, $reset, userUsername, isSeriesCreator, isSeasonCreator, isEpisodeCreator, userRole}
 })
