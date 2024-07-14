@@ -6,16 +6,19 @@
   const tv_service_root_url = import.meta.env.VITE_TV_SERVICE_URL
 
   const seasonForm = useSeasonFormStore()
+  const userStore = useUserStore()
 
   const seriesOptions = ref([])
   const serviceHTTPCode = ref(null);
   const bEHTTPCode = ref(null);
+  const newSeasonData = ref([]);
+
 
   function reset() { 
       seasonForm.$reset()
       serviceHTTPCode.value = null
       bEHTTPCode.value = null
-      // newSeriesData.value = []
+      newSeasonData.value = []
     }
 
   async function getSeries() {
@@ -43,6 +46,33 @@
     }
   }
 
+  async function createSeason() {
+    const requestOptions = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        id: seasonForm.id,
+        buy: seasonForm.buy, 
+        flatrate: seasonForm.flatrate,
+        seasonNum: seasonForm.seasonNum,
+        seriesId: seasonForm.seriesId,
+        creatorId: userStore.userId
+      })
+    };
+    const response = await fetch(tv_service_root_url + "api/v1/seasons", requestOptions)
+    if (response.status == 201 ) {
+      reset()
+      bEHTTPCode.value = response.status
+      const data = await response.json()
+      newSeasonData.value.push(data.name)
+      newSeasonData.value.push(data.id)
+
+
+    } else {
+      bEHTTPCode.value = response.status
+    }
+  }
+
 
 
 </script>
@@ -51,12 +81,14 @@
     <p v-if= "serviceHTTPCode === 204">ID number not found</p>
     <p v-if= "serviceHTTPCode === 304">Already exists: please use another ID number</p>
     <p v-if= "serviceHTTPCode === 9000">Something went wrong</p>
-    <p v-if= "bEHTTPCode === 201">Thank you for adding {{ newSeriesData[0]}} with id ({{ newSeriesData[1] }})!</p>
+    <p v-if= "bEHTTPCode === 201">Thank you for adding {{ newSeasonData[0]}} with id ({{ newSeasonData[1] }})!</p>
     <p v-if= "bEHTTPCode === 401">Something went wrong</p>
     <p v-if= "bEHTTPCode === 500">Something else went wrong</p>
   </div>
 
   <div>
+
+  <p>userStore: {{ userStore.userId }}</p>
   <p>{{ tv_service_root_url }}</p>
   <p>bluey: 82728, 0: 138218, 1:110147, 2:143749, 3:209453 </p>
 
@@ -82,8 +114,9 @@
 
   </form>
 
-  <!-- submit -->
-  <!-- reset -->
+  <button @click="reset()">Reset</button>
+  <button @click="createSeason()">Submit</button>
+
 </div>
 </template>
 <style>
