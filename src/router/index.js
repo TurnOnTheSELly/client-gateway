@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import CreateSeriesView from '../views/CreateSeriesView.vue'
 import CreateSeasonView from '@/views/CreateSeasonView.vue'
+import CreateEpisodeView from '@/views/CreateEpisodeView.vue'
 
 
 const router = createRouter({
@@ -35,6 +36,11 @@ const router = createRouter({
       path: '/createSeason',
       name: 'createSeason',
       component: CreateSeasonView
+    },
+    {
+      path: '/createEpisode',
+      name: 'createEpisode',
+      component: CreateEpisodeView
     }
   ]
 })
