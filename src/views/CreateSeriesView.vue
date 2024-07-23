@@ -51,7 +51,7 @@
 
     async function findSeriesDetails() {
         const headers = { "Content-Type": "application/json" };
-        const response = await fetch(tv_service_root_url + `api/v1/series_services/${seriesForm.id}`, { headers })
+        const response = await fetch(tv_service_root_url + `api/v1/remote/series/${seriesForm.id}`, { headers })
         if (response.status == 201) {
             const data = await response.json()
           seriesForm.name = data.name 

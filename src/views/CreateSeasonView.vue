@@ -29,7 +29,7 @@
 
   async function findSeasonDetails() {
     const headers = { "Content-Type": "application/json" };
-    const response = await fetch(tv_service_root_url + `api/v1/series_services/${seasonForm.seriesId}/season_services/${seasonForm.seasonNum}`, { headers })
+    const response = await fetch(tv_service_root_url + `api/v1/remote/series/${seasonForm.seriesId}/seasons/${seasonForm.seasonNum}`, { headers })
     if (response.status == 201) {
         const data = await response.json()
           seasonForm.id = data.id
