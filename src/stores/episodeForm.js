@@ -10,14 +10,15 @@ export const useEpisodeFormStore = defineStore( 'episodesForm', () => {
   const stillPath = ref(null)
   const runtime = ref(null)
   const airDate = ref(null)
-  
+
   const set = ref("1 of 1")
   const note = ref(null)
 
-  const situations = ref(null)
-  const sels = ref(null)
-  const headsUps = ref(null)
-  const settings = ref(null)
+  const sels1 = ref([])
+  const sels2 = ref([])
+  const situations = ref([])
+  const headsUps = ref([])
+  const settings = ref([])
 
   function $reset() {
     id.value = null
@@ -32,10 +33,11 @@ export const useEpisodeFormStore = defineStore( 'episodesForm', () => {
     set.value = "1 of 1"
     note.value = null
   
-    situations.value = null
-    sels.value = null
-    headsUps.value = null
-    settings.value = null
+    sels1.value = []
+    sels2.value = []
+    situations.value = []
+    headsUps.value = []
+    settings.value = []
   }
 
   return { 
@@ -48,8 +50,9 @@ export const useEpisodeFormStore = defineStore( 'episodesForm', () => {
     airDate, 
     set, 
     note, 
+    sels1, 
+    sels2, 
     situations, 
-    sels, 
     headsUps, 
     settings, 
     $reset 
