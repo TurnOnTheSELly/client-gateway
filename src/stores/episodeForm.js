@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useEpisodeFormStore = defineStore( 'episodesForm', () => {
   const id = ref(null)
+  const name = ref(null)
   const seasonData = ref({})
   const episodeNum = ref(null)
 
@@ -22,6 +23,7 @@ export const useEpisodeFormStore = defineStore( 'episodesForm', () => {
 
   function $reset() {
     id.value = null
+    name.value = null
     seasonData.value = {}
     episodeNum.value = null
   
@@ -42,6 +44,7 @@ export const useEpisodeFormStore = defineStore( 'episodesForm', () => {
 
   return { 
     id,
+    name,
     seasonData, 
     episodeNum,
     overview, 

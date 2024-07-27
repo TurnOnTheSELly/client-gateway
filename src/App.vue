@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { useUserStore } from './stores/theUser';
 
-const theUser = useUserStore();
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -19,11 +19,11 @@ const theUser = useUserStore();
         <RouterLink to="/login">Login</RouterLink>
         <!-- <RouterLink to="/games_teacher">Games (teacher)</RouterLink> -->
         <br><br><p>
-          <RouterLink v-if= "theUser.isSeriesCreator" to="/createSeries">Create Shows</RouterLink>
-          <RouterLink v-if= "theUser.isSeasonCreator" to="/createSeason">Create Seasons</RouterLink>
-          <RouterLink v-if= "theUser.isEpisodeCreator" to="/createEpisode">Create Episodes</RouterLink>
-          <!-- <RouterLink v-if= "theUser.userRole >= 3" to="/test">Change Details</RouterLink> -->
-          <!-- <RouterLink v-if= "theUser.userRole >= 5" to="/test">User Permissions</RouterLink> -->
+          <RouterLink v-if= "userStore.isSeriesCreator" to="/createSeries">Create Shows</RouterLink>
+          <RouterLink v-if= "userStore.isSeasonCreator" to="/createSeason">Create Seasons</RouterLink>
+          <RouterLink v-if= "userStore.isEpisodeCreator" to="/createEpisode">Create Episodes</RouterLink>
+          <!-- <RouterLink v-if= "userStore.userRole >= 3" to="/test">Change Details</RouterLink> -->
+          <!-- <RouterLink v-if= "userStore.userRole >= 5" to="/test">User Permissions</RouterLink> -->
         </p>
       </nav>
     </div>

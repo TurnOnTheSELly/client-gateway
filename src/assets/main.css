@@ -21,9 +21,14 @@ a,
   }
 }
 
+/* @media AND screen () {
+  make rules
+  
+} */
+
 @media (min-width: 100vh) {
   body {
-    display: flex;
+    /* display: flex; */
     place-items: center;
   }
 
