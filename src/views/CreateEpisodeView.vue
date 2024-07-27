@@ -154,37 +154,52 @@
         <button type="button" @click="findAttributes()"> Load Attributes</button><br><br>
 
         <!-- <p>{{ attributeOptions.sels[1].name }}</p> -->
+        <div class="sel">
+          <div class="attribute-select">
+            <label for="sel1">SEL(primary): {{ episodeForm.sels1.length }} selected</label><br>
+            <button type="button" @click="episodeForm.sels1 = []">select none</button><br>
+            <select id="sel1" class="manual" v-model="episodeForm.sels1" multiple>
+              <option v-for="sels in attributeOptions.sels" :value="sels.id" :key="sels.id">{{ sels.name }}</option>
+            </select>
+          </div>
+          
+          <div class="attribute-select">
+            <label for="sel2">SEL(secondary): {{ episodeForm.sels2.length  }} selected</label><br>
+            <button type="button" @click="episodeForm.sels2 = []">select none</button><br>
+            <select id="sel2" class="manual" v-model="episodeForm.sels2" multiple>
+              <option v-for="sels in attributeOptions.sels" :value="sels.id" :key="sels.id">{{ sels.name }}</option>
+            </select>
+          </div>
+        </div>
 
-        <label for="sel1">SEL(primary): {{ episodeForm.sels1.length }} selected</label><br>
-        <button type="button" @click="episodeForm.sels1 = []">select none</button><br>
-        <select id="sel1" class="manual" v-model="episodeForm.sels1" multiple>
-          <option v-for="sels in attributeOptions.sels" :value="sels.id" :key="sels.id">{{ sels.name }}</option>
-        </select><br><br>
-        
-        <label for="sel2">SEL(secondary): {{ episodeForm.sels2.length  }} selected</label><br>
-        <button type="button" @click="episodeForm.sels2 = []">select none</button><br>
-        <select id="sel2" class="manual" v-model="episodeForm.sels2" multiple>
-          <option v-for="sels in attributeOptions.sels" :value="sels.id" :key="sels.id">{{ sels.name }}</option>
-        </select><br><br>
-        
-        <label for="situation">Situation: {{ episodeForm.situations.length  }} selected</label><br>
-        <button type="button" @click="episodeForm.situations = []">select none</button><br>
-        <select id="situation" class="manual" v-model="episodeForm.situations" multiple>
-          <option v-for="data in attributeOptions.situations" :value="data.id" :key="data.id">{{ data.name }}</option>
-        </select><br><br>
-        
-        <label for="setting">Setting: {{ episodeForm.settings.length  }} selected</label><br>
-        <button type="button" @click="episodeForm.settings = []">select none</button><br>
-        <select id="setting" class="manual" v-model="episodeForm.settings" multiple>
-          <option v-for="data in attributeOptions.settings" :value="data.id" :key="data.id">{{ data.name }}</option>
-        </select><br><br>
-        
-        <label for="headsUp">Heads up: {{ episodeForm.headsUps.length  }} selected</label><br>
-        <button type="button" @click="episodeForm.headsUps = []">select none</button><br>
-        <select id="headsUp" class="manual" v-model="episodeForm.headsUps" multiple>
-          <option v-for="data in attributeOptions.heads_ups" :value="data.id" :key="data.id">{{ data.name }}</option>
-        </select><br><br>
+        <div class="attributes">
+          <div class="attribute-select">
+            <label for="situation">Situation: {{ episodeForm.situations.length  }} selected</label><br>
+            <button type="button" @click="episodeForm.situations = []">select none</button><br>
+            <select id="situation" class="manual" v-model="episodeForm.situations" multiple>
+              <option v-for="data in attributeOptions.situations" :value="data.id" :key="data.id">{{ data.name }}</option>
+            </select>
+          </div>
+          
+          <div class="attribute-select">
+            <label for="setting">Setting: {{ episodeForm.settings.length  }} selected</label><br>
+            <button type="button" @click="episodeForm.settings = []">select none</button><br>
+            <select id="setting" class="manual" v-model="episodeForm.settings" multiple>
+              <option v-for="data in attributeOptions.settings" :value="data.id" :key="data.id">{{ data.name }}</option>
+            </select>
+          </div>          
+          
+          <div class="attribute-select">
+            <label for="headsUp">Heads up: {{ episodeForm.headsUps.length  }} selected</label><br>
+            <button type="button" @click="episodeForm.headsUps = []">select none</button><br>
+            <select id="headsUp" class="manual" v-model="episodeForm.headsUps" multiple>
+              <option v-for="data in attributeOptions.heads_ups" :value="data.id" :key="data.id">{{ data.name }}</option>
+            </select>
+          </div>
+        </div>
 
+        <label for="note">For notes(please avoid): </label><br>
+        <textarea id="note" v-model="episodeForm.note" placeholder="It's here if you need it"></textarea>
       </div>
 
 
@@ -202,6 +217,10 @@
 </template>
 
 <style>
+
+body {
+  width: 80%;
+}
 
 /* select {
   display: block;
@@ -227,6 +246,21 @@ div.manual-fill {
 
   }
 }
+
+div.sel {
+  display: block;
+}
+
+div.attribute-select {
+  display: inline-block;
+  padding: 5px 50px 5px 0px;  
+}
+
+/* select {
+  color: var(--love);
+  background-color: var(--subtle);
+} */
+
 
 
 .pink.text {
