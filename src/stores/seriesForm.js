@@ -9,6 +9,7 @@ export const useSeriesFormStore = defineStore('seriesForm', () => {
   const overview = ref(null)
   const genres = ref([])
   const posterPath = ref(null)
+  const rating = ref(null)
 
 
 
@@ -20,8 +21,9 @@ export const useSeriesFormStore = defineStore('seriesForm', () => {
     overview.value = null
     genres.value = []
     posterPath.value = null
+    rating.value = null
   }
 
-  return { id, name, img, website, overview, genres, posterPath, $reset }
+  return { id, name, img, website, overview, genres, posterPath, rating, $reset }
 
 })
