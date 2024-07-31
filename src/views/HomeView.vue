@@ -4,9 +4,13 @@
 // import TestComponent from '@/components/TestComponent.vue';
 import EpisodeComponent from '@/components/EpisodeComponent.vue';
 import { ref, onMounted }from 'vue';
-import Multiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect';
+import { useSearchStore } from '@/stores/search';
 
 import '@/assets/multiselect.css';
+
+const searchStore = useSearchStore();
+
 
 const tv_service_root_url = import.meta.env.VITE_TV_SERVICE_URL;
 
@@ -15,19 +19,6 @@ const searchKeys = ref(null);
 const attributeOptions = ref([]);
 const test = [{name: "one", id:1}, {name: "two",id: 2}, {name: "three",id: 3}]
 
-const seriesOptions = ref([]);
-const selsOptions = ref([]);
-const headsUpsOptions = ref([]);
-const situationsOptions = ref([]);
-const settingsOptions = ref([]);
-
-const series = ref([]);
-const sels1 = ref([]);
-const sels2 = ref([]);
-const headsUps = ref([]);
-const situations = ref([]);
-const settings = ref([]);
-const runtime = ref([]);
 
 
 
@@ -46,19 +37,41 @@ const fetchData = async () => {
   }
 };
 
-async function findAttributes() {
+
+
+async function findAttributesIf() {
+  if (searchStore.selsOptions.length === 0){
     const headers = { "Content-Type": "application/json" };
     const response = await fetch(tv_service_root_url + `api/v1/attribute_tables?q=search`, { headers })
     const data = await response.json()
-      seriesOptions.value = data.series
-      selsOptions.value = data.sels
-      headsUpsOptions.value = data.heads_ups
-      situationsOptions.value = data.situations
-      settingsOptions.value =data.settings
+      searchStore.seriesOptions = data.series
+      searchStore.selsOptions = data.sels
+      searchStore.headsUpsOptions = data.heads_ups
+      searchStore.situationsOptions = data.situations
+      searchStore.settingsOptions =data.settings
   }
+}
 
-onMounted(fetchData)
-onMounted(findAttributes)
+async function createSearch() {
+  const requestOptions = {
+    method: "Post",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      series: searchStore.series,
+      sels: searchStore.sels,
+      headsUps: searchStore.headsUps,
+      situations: searchStore.situations,
+      settings: searchStore.settings,
+      maxRuntime: searchStore.maxRuntime
+    })
+  };
+  const response = await fetch(tv_service_root_url + "/api/v1/search", requestOptions)
+  const data = await response.json()
+    searchDatas.value = data
+}
+
+// onMounted(fetchData)
+onMounted(findAttributesIf)
 
 </script>
 
@@ -66,13 +79,14 @@ onMounted(findAttributes)
 
 <template>
   <p>{{ searchKeys }}</p>
+  <button @click="searchStore.$reset">Reset</button>
 
 <div class="multi">
   <div class="search-criteria">
     <label>Select Series(multiple):</label>
     <Multiselect
-      v-model="series"
-      :options="seriesOptions"
+      v-model="searchStore.series"
+      :options="searchStore.seriesOptions"
       :multiple="true"
       :close-on-select="false"
       :clear-on-select="false"
@@ -90,31 +104,10 @@ onMounted(findAttributes)
   </div>
   
   <div class="search-criteria">
-    <label>Select Primary Sels (multiple):</label>
+    <label>Select  SELs (multiple):</label>
     <Multiselect
-      v-model="sels1"
-      :options="selsOptions"
-      :multiple="true"
-      :close-on-select="false"
-      :clear-on-select="false"
-      :preserve-search="true"
-      placeholder="Pick some"
-      label="name"
-      track-by="id" 
-      :preselect-first="false">
-      <template #selection="{ values, search, isOpen }">
-          <span class="multiselect__single"
-                v-if="values.length"
-                v-show="!isOpen">{{ values.length }} options selected</span>
-        </template>
-      </Multiselect>
-  </div>
-  
-  <div class="search-criteria">
-    <label>Select Secondary Sels (multiple):</label>
-    <Multiselect
-      v-model="sels2"
-      :options="selsOptions"
+      v-model="searchStore.sels"
+      :options="searchStore.selsOptions"
       :multiple="true"
       :close-on-select="false"
       :clear-on-select="false"
@@ -134,15 +127,15 @@ onMounted(findAttributes)
   <div class="search-criteria">
     <label>Select Heads Up (multiple):</label>
     <Multiselect
-      v-model="headsUps"
-      :options="headsUpsOptions"
+      v-model="searchStore.headsUps"
+      :options="searchStore.headsUpsOptions"
       :multiple="true"
       :close-on-select="false"
       :clear-on-select="false"
       :preserve-search="true"
       placeholder="Pick some"
       label="name"
-      track-by="id" 
+      track-by="id"
       :preselect-first="false">
       <template #selection="{ values, search, isOpen }">
           <span class="multiselect__single"
@@ -155,8 +148,8 @@ onMounted(findAttributes)
   <div class="search-criteria">
     <label>Select Situations (multiple):</label>
     <Multiselect
-      v-model="situations"
-      :options="situationsOptions"
+      v-model="searchStore.situations"
+      :options="searchStore.situationsOptions"
       :multiple="true"
       :close-on-select="false"
       :clear-on-select="false"
@@ -176,8 +169,8 @@ onMounted(findAttributes)
   <div class="search-criteria">
     <label>Select Settings (multiple):</label>
     <Multiselect
-      v-model="settings"
-      :options="settingsOptions"
+      v-model="searchStore.settings"
+      :options="searchStore.settingsOptions"
       :multiple="true"
       :close-on-select="false"
       :clear-on-select="false"
@@ -197,7 +190,8 @@ onMounted(findAttributes)
 
 <br>
 <label for="runtime"> Max length: </label>
-<input id="runtime" v-model="runtime" type="range" min="1" max="100">
+<input id="runtime" v-model="maxRuntime" type="range" min="1" max="100">
+<button @click="createSearch">Search</button>
 
 
   <body>
