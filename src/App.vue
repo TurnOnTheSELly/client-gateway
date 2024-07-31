@@ -32,6 +32,7 @@ const userStore = useUserStore();
   <RouterView />
 </template>
 
+
 <style scoped>
 header {
   line-height: 1.5;

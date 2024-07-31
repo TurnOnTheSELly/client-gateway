@@ -56,7 +56,6 @@
     const headers = { "Content-Type": "application/json" };
     const response = await fetch(tv_service_root_url + `api/v1/attribute_tables`, { headers })
     attributeOptions.value = await response.json()
-
   }
 
   async function createEpisode() {
