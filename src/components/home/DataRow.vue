@@ -8,13 +8,13 @@
   <table>
 
     <tr>
-      <th
+      <!-- <th
         v-for="(header, i) in searchKeys"
         :key="`${header}${i}`"
         class="header-shows"
       >
       {{ header }}
-      </th>
+      </th> -->
     </tr>
     <tr
       v-for="entity in rowObject"

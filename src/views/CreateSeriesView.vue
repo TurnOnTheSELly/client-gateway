@@ -31,6 +31,7 @@
           overview: seriesForm.overview,
           genres: seriesForm.genres,
           posterPath: seriesForm.posterPath,
+          rating: seriesForm.rating,
           creator_id: userStore.id
         })
       };
@@ -60,6 +61,7 @@
           seriesForm.overview = data.overview 
           seriesForm.genres = data.genres 
           seriesForm.posterPath = data.poster_path
+          seriesForm.rating = data.rating
           serviceHTTPCode.value = response.status
         } else if (response.status == 204){
           reset()
@@ -93,6 +95,9 @@
 
         <label> Series Name: </label>
         <input v-model="seriesForm.name" placeholder="show name"/><br>
+
+        <label> Series Rating(US): </label>
+        <input v-model="seriesForm.rating" placeholder="US rating"/><br>
 
         <label> Homepage URL </label>
         <input v-model="seriesForm.website" placeholder="url"/><br>
