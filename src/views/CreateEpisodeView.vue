@@ -12,7 +12,7 @@
   const attributeOptions = ref({})
   const serviceHTTPCode = ref(null);
   const bEHTTPCode = ref(null);
-  const newEpisodeData = ref([]);
+  const newEpisodeData = ref(null);
 
 
   function reset() {
@@ -87,9 +87,7 @@
       reset()
       bEHTTPCode.value = response.status
       const data = await response.json()
-      newEpisodeData.value.push(data.name)
-      newEpisodeData.value.push(data.id)
-    } else {
+      newEpisodeData.value = data
       bEHTTPCode.value = response.status
     }
   }
@@ -102,7 +100,7 @@
       <p v-if= "serviceHTTPCode === 204">ID number not found</p>
       <p v-if= "serviceHTTPCode === 304">Already exists: please use another ID number</p>
       <p v-if= "serviceHTTPCode === 9000">Something went wrong</p>
-      <p v-if= "bEHTTPCode === 201">Thank you for adding {{ newSeasonData[0]}} with id ({{ newSeasonData[1] }})!</p>
+      <p v-if= "bEHTTPCode === 201"> Thank you for adding episode {{ newEpisodeData.episode_num }} {{ newEpisodeData.name }} from season {{ newEpisodeData.season_num }} with id ({{ newEpisodeData.id }})! </p>
       <p v-if= "bEHTTPCode === 401">Something went wrong</p>
       <p v-if= "bEHTTPCode === 500">Something else went wrong</p>
     </div>

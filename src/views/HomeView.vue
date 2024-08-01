@@ -189,8 +189,8 @@ onMounted(findAttributesIf)
 </div>
 
 <br>
-<label for="runtime"> Max length: </label>
-<input id="runtime" v-model="maxRuntime" type="range" min="1" max="100">
+<!-- <label for="runtime"> Max length: </label>
+<input id="runtime" v-model="maxRuntime" type="range" min="1" max="100"> -->
 <button @click="createSearch">Search</button>
 
 
@@ -198,7 +198,6 @@ onMounted(findAttributesIf)
     <div class="episode-component" v-for="data in searchDatas" :key="data.id">
       <EpisodeComponent :data="data" />
     </div>
-    <p>This is weird</p>
   </body>
 
 
