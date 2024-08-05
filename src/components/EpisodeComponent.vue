@@ -71,18 +71,22 @@
  
     </div>
     <div class="hidden" v-if="isOpen">
-      <img :src="getImgUrl(data.poster_path)" height="100px">
-
-      <div id="episode-overview">
-        Overview: {{ data.overview }}
+      <div class="image">
+        <img :src="getImgUrl(data.poster_path)" height="100px">
       </div>
+      
+      <div class="text">
+        <div id="episode-overview">
+          Overview: {{ data.overview }}
+        </div>
 
-      <div id="series-overview">
-        Series Overview: {{ data.series_overview }}
-      </div>
+        <div id="series-overview">
+          Series Overview: {{ data.series_overview }}
+        </div>
 
-      <div id="air-date">
-        {{ data.air_date }}
+        <div id="air-date">
+         Air Date(yyyy-mm-dd): {{ data.air_date }}
+        </div>
       </div>
 
     </div>
@@ -93,17 +97,17 @@
 
 <style>
 div.body {
-  width:1200px;
+  width: 100%;
   height:auto;
   background-color: var(--overlay);
   border-radius: 30px;
+  overflow: hidden;
   margin: 10px 2px;
 
   div.visible { 
-    display: inline;
     background-color: var(--overlay);
     padding: 10px;
-    height: 30;
+    height: 300px;
 
     div {
       display: inline-block;
@@ -113,17 +117,37 @@ div.body {
   }
 
   div.hidden{
-    display: inline ;
+    /* display: inline ; */
     background-color: var(--muted);
-    height: 50;
+    /* height: 200px; */
+    padding: 20px;
 
-    img {
-      display:inline-block
+    div.text {
+      div {
+        margin: 0px 0px 20px 0px;
+      }
+    }
+
+    div.image{
+      display: inline-block;
+      width: 15%;
     }
     
-    div {
+    
+    div.text {
       display: inline-block;
+      width: 85%;
+
     }
+
+
+    /* img {
+      display: inline;
+    }
+     */
+    /* div {
+      display: inline-block;
+    } */
   }
 }
 

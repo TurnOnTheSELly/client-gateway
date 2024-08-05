@@ -194,11 +194,11 @@ onMounted(findAttributesIf)
 <button @click="createSearch">Search</button>
 
 
-  <body>
+  
     <div class="episode-component" v-for="data in searchDatas" :key="data.id">
       <EpisodeComponent :data="data" />
     </div>
-  </body>
+  
 
 
 </template>

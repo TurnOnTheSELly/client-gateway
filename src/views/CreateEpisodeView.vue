@@ -215,9 +215,6 @@
 
 <style>
 
-body {
-  width: 80%;
-}
 
 /* select {
   display: block;
