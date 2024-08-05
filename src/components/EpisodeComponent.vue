@@ -72,7 +72,7 @@
     </div>
     <div class="hidden" v-if="isOpen">
       <div class="image">
-        <img :src="getImgUrl(data.poster_path)" height="100px">
+        <img :src="getImgUrl(data.poster_path)" height="300">
       </div>
       
       <div class="text">
@@ -130,13 +130,13 @@ div.body {
 
     div.image{
       display: inline-block;
-      width: 15%;
+      width: 30%;
     }
     
     
     div.text {
       display: inline-block;
-      width: 85%;
+      width: 70%;
 
     }
 
@@ -154,6 +154,10 @@ div.body {
 .list {
   width: 200px;
 }
+
+/* #series-name {
+  position: absolute;
+} */
 
 
 
