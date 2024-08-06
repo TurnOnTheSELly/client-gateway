@@ -80,11 +80,13 @@
     </div>
     <div class="hidden" v-if="isOpen">
 
-      <div class="image">
-        <img :src="getImgUrl(data.poster_path)" height="100px">
+      <h2> {{ data.episode_name }} of {{ data.series_name}} season: {{ data.season_num }} </h2>
+
+      <div id="image">
+        <img :src="getImgUrl(data.poster_path)" width="150px">
       </div>
 
-      <div class="details">
+      <div id="details">
         <div id="episode-overview">
           Overview: {{ data.overview }}
         </div>
@@ -94,7 +96,7 @@
         </div>
 
         <div id="air-date">
-          {{ data.air_date }}
+          Air Date(yyyy-mm-dd): {{ data.air_date }}
         </div>
       </div>
 
@@ -106,7 +108,7 @@
 
 <style>
 div.body {
-  width:1200px;
+  width: 1600px;
   height:auto;
   background-color: var(--overlay);
   border-radius: 30px;
@@ -115,27 +117,44 @@ div.body {
   div.visible { 
     /* display: inline; */
     background-color: var(--overlay);
+    border-radius: 30px;
     padding: 10px;
-    height: 30;
+    height: 100px;
+    /* overflow: scroll; */
+    position: relative;
 
     div {
-      display: inline-block;
+      /* height: 100px;
+      overflow: scroll; */
+      display: block;
       padding: 2px 5px;
-      width: 100px;
+      /* width: 100px; */
     }
   }
 
   div.hidden{
-    /* display: inline ; */
     background-color: var(--muted);
-    height: 50;
+    height: 100;
+    border-radius: 30px;
 
+    h2 {
+     padding: 30px 0 0 30px;
+      display: block;
+
+    }
     img {
       display:inline-block
     }
     
     div {
       display: inline-block;
+      margin-top: 5px;
+      /* height: 100px; */
+      /* overflow: scroll; */
+
+      div {
+        margin: 0 0 20px 0;
+      }
     }
   }
 }
@@ -143,6 +162,79 @@ div.body {
 .list {
   width: 200px;
 }
+
+#image {
+  /* margin: 10px 0 0 10px; */
+  box-sizing: content-box;
+  margin: 20px;
+  width: 150px;
+  height: auto;
+  /* border-radius: 30px; */
+  overflow: hidden;
+  img {
+    /* object-fit: contain; */
+    border-radius: 30px;
+
+  }
+}
+#details {
+  position: absolute;
+  width: 800px;
+  margin: 50px 0 0 30px;
+  /* border-radius: 30px; */
+  /* top: 5px; */
+
+}
+
+#series-data {
+  position: absolute;
+  top: 10px
+}
+
+#epi-season {
+  position: absolute;
+  top: 10px;
+  left: 150px;
+}
+
+#time {
+  position: absolute;
+  top: 10px;
+  left: 400px;
+}
+ 
+#sels1 {
+  height: 90px;
+  position: absolute;
+  top: 10px;
+  left: 600px;
+  overflow: scroll;
+}
+ 
+#sels2 {
+  position: absolute;
+  top: 10px;
+  left: 800px;
+}
+ 
+#situations {
+  position: absolute;
+  top: 10px;
+  left:1000px;
+}
+ 
+#settings {
+  position: absolute;
+  top: 10px;
+  left: 1200px;
+}
+
+#heads-ups {
+  position: absolute;
+  top: 10px;
+  left: 1400px;
+}
+ 
 
 
 
