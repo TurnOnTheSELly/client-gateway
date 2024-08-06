@@ -16,17 +16,17 @@
   <div class="body">
     <div class="visible" @click="isOpen = !isOpen">
         
-      <div id="series-data">
+      <div class="column" id="series-data">
         <div id="series-name">
           {{ data.series_name }}
         </div>
         
         <div id="rating">
-          {{ data.rating }}
+          ({{ data.rating }})
         </div>
       </div> 
      
-      <div id="epi-season">
+      <div class="column" id="epi-season">
         <div id="episode-name">
           {{ data.episode_name }}
         </div>
@@ -37,7 +37,7 @@
       </div>
 
 
-      <div id="time">
+      <div class="column" id="time">
         <div id="runtime">
           {{ data.runtime }} minutes
         </div>
@@ -47,31 +47,31 @@
         </div>
       </div>
  
-      <div class="list" id="sels1">
+      <div class="list column" id="sels1">
         <li v-for="(sel, i) in data.sels1?.split('| ')" :key="`${sels1}-${i}`">
           {{ sel }}
         </li>
       </div>
  
-      <div class="list" id="sels2">
+      <div class="list column" id="sels2">
         <li v-for="(sel, i) in data.sel2?.split('| ')" :key="`${sels2}-${i}`">
           {{ sel }}
         </li>
       </div>
  
-      <div class="list" id="situations">
+      <div class="list column" id="situations">
         <li v-for="(situation, i) in data.situations?.split('| ')" :key="`${situations}-${i}`">
           {{ situation }}
         </li>
       </div>
  
-      <div class="list" id="settings">
+      <div class="list column" id="settings">
         <li v-for="(setting, i) in data.settings?.split('| ')" :key="`${settingsl}-${i}`">
           {{ setting }}
         </li>
       </div>
  
-      <div class="list" id="heads-ups">
+      <div class="list column" id="heads-ups">
         <li v-for="(headsUp, i) in data.heads_ups?.split('| ')" :key="`${heads_ups}-${i}`">
           {{ headsUp }}
         </li>
@@ -123,12 +123,15 @@ div.body {
     /* overflow: scroll; */
     position: relative;
 
-    div {
-      /* height: 100px;
-      overflow: scroll; */
+    div.column {
       display: block;
-      padding: 2px 5px;
-      /* width: 100px; */
+      position: absolute;
+      top: 10px;
+    }
+
+    div.list {
+      height: 90px;
+      overflow: scroll;
     }
   }
 
@@ -187,51 +190,34 @@ div.body {
 }
 
 #series-data {
-  position: absolute;
-  top: 10px
+  left: 20px;
 }
 
 #epi-season {
-  position: absolute;
-  top: 10px;
   left: 150px;
 }
 
 #time {
-  position: absolute;
-  top: 10px;
   left: 400px;
 }
  
 #sels1 {
-  height: 90px;
-  position: absolute;
-  top: 10px;
   left: 600px;
-  overflow: scroll;
 }
  
 #sels2 {
-  position: absolute;
-  top: 10px;
   left: 800px;
 }
  
 #situations {
-  position: absolute;
-  top: 10px;
   left:1000px;
 }
  
 #settings {
-  position: absolute;
-  top: 10px;
   left: 1200px;
 }
 
 #heads-ups {
-  position: absolute;
-  top: 10px;
   left: 1400px;
 }
  
