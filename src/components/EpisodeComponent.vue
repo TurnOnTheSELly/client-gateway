@@ -2,7 +2,7 @@
   import { ref } from 'vue';
 
 
-  defineProps (['data'])
+  defineProps ({data: Object})
 
   const isOpen = ref(false)
   
