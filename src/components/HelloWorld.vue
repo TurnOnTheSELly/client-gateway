@@ -20,14 +20,14 @@ defineProps({
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
-  color: var(--foam);
+  color: var(--cal-poly-green);
   position: relative;
   top: -10px;
 }
 
 h3 {
   font-size: 1.2rem;
-  color: var(--pine);
+  color: var(--golden-brown);
   font-weight: 800;
 
 }

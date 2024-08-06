@@ -110,13 +110,14 @@
 div.body {
   width: 1600px;
   height:auto;
-  background-color: var(--overlay);
+  background-color: var(--mindaro);
   border-radius: 30px;
   margin: 10px 2px;
-
+  
   div.visible { 
     /* display: inline; */
-    background-color: var(--overlay);
+    background-color: var(--mindaro);
+    color: var(--dark-green);
     border-radius: 30px;
     padding: 10px;
     height: 100px;
@@ -136,7 +137,7 @@ div.body {
   }
 
   div.hidden{
-    background-color: var(--muted);
+    background-color: var(--persian-orange);
     height: 100;
     border-radius: 30px;
 

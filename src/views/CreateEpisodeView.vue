@@ -214,6 +214,9 @@
 </template>
 
 <style>
+body {
+  color: black;
+}
 
 body {
   width: 80%;
