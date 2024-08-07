@@ -128,4 +128,8 @@
 </template>
 
 
-<style></style>
+<style>
+body {
+  color: black;
+}
+</style>

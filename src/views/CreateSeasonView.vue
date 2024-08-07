@@ -126,4 +126,7 @@
 </template>
 
 <style>
+body {
+  color: black;
+}
 </style>
