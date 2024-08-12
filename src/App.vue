@@ -1,17 +1,23 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import { useUserStore } from './stores/theUser';
 
 const userStore = useUserStore();
 </script>
 
 <template>
+  <head>
+    <title>SELly</title>
+    <link rel="icon" type="image/x-icon" href="@/assets/icons/selly_favicon.ico" />
+
+  </head>
   <header>
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <HelloWorld msg="Turn on the Selly" />
+      <div class=banner>
+        <img src="@/assets/images/selly_banner_w_slogan.png" height="100px" />
+      </div>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -34,10 +40,17 @@ const userStore = useUserStore();
 
 
 <style scoped>
+
 header {
   line-height: 1.5;
   display: inline
   /* max-height: 100vh; */
+}
+
+.banner {
+  position: relative;
+  top: 15px;
+  left: 0px;
 }
 
 .logo {
