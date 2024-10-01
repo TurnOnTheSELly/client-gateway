@@ -26,6 +26,7 @@
     const headers = { "Content-Type": "application/json" };
     const response = await fetch(tv_service_root_url + 'api/v1/seasons?q=concise', { headers })
     seasonsOptions.value = await response.json()
+    console.log(seasonsOptions.value)
 
   }
 
