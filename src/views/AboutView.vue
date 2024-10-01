@@ -21,7 +21,7 @@ const test = "joop"
   <div class="about-individuals">
     <div v-for="bio in biographies">
       <div class="individual-bio">
-        <img alt="profile" :src="`/src/assets/images/profiles/${bio.profilePic}.png`" /> 
+        <img alt="profile" :src="`/${bio.profilePic}.png`" /> 
         <h2>{{ bio.name }}</h2>
         <h3>{{ bio.position }}</h3>
         <p>{{ bio.description }}</p>
