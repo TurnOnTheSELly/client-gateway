@@ -34,7 +34,7 @@ function logout(){
 const callback = (response) => {
   console.log(theUser.isLoggedIn)
   let creds = decodeCredential(response.credential)
-  localStorage.setItem("name", creds.name)
+  // localStorage.setItem("name", creds.name)
   checkLogin(creds.name, creds.email, creds.sub, "google")
   console.log(theUser.isLoggedIn)
 
@@ -45,33 +45,25 @@ const callback = (response) => {
 </script>
 
 <template>
-        <p> role: {{ theUser }} </p>
-      <p> sub: {{ theUser.userSub }} </p>
+        <!-- <p> role: {{ theUser }} </p> -->
+      <!-- <p> sub: {{ theUser.userSub }} </p> -->
   <div> logged in: {{ theUser.isLoggedIn() }}</div>
-  <p>The name is also: {{ theUser.userName}}</p>
+  <!-- <p>The name is also: {{ theUser.userName}}</p> -->
     <div v-if="theUser.isLoggedIn()" class="login">
       <button @click="logout" >Logout</button>
 
-      <h1>This is a view page</h1>
-      <p> role: {{ theUser.role }}</p>
-      <p> sub: {{  theUser.googleSub }}</p>
+      <!-- <h1>This is a view page</h1> -->
+      <!-- <p> role: {{ theUser.role }}</p> -->
+      <!-- <p> sub: {{  theUser.googleSub }}</p> -->
 
-      <!-- <p>The name is: {{ user.name }}</p>
-      <p>The email is: {{ user.email }}</p> -->
 
     </div>
     <div v-else class="loggedIn">
       <GoogleLogin :callback="callback" />
     </div>
-    <div>test</div>
+
   </template>
   
   <style>
-  /* @media (min-width: 1024px) {
-    .about {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-  } */
+
   </style>

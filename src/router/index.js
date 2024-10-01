@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import CreateSeriesView from '../views/CreateSeriesView.vue'
 import CreateSeasonView from '@/views/CreateSeasonView.vue'
 import CreateEpisodeView from '@/views/CreateEpisodeView.vue'
+import GlossaryView from '@/views/GlossaryView.vue'
 
 
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/glossary',
+      name: 'glossary',
+      component: GlossaryView
     },
     {
       path: '/login',
