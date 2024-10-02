@@ -3,6 +3,7 @@
 // import DataTable from '../components/home/DataTable.vue'
 // import TestComponent from '@/components/TestComponent.vue';
 import EpisodeComponent from '@/components/EpisodeComponent.vue';
+import HeaderEpisodeComponent from '@/components/HeaderEpisodeComponent.vue';
 import { ref, onMounted }from 'vue';
 import Multiselect from 'vue-multiselect';
 import { useSearchStore } from '@/stores/search';
@@ -195,6 +196,9 @@ onMounted(findAttributesIf)
 
 
   <body>
+    
+    <HeaderEpisodeComponent  />
+    
     <div class="episode-component" v-for="data in searchDatas" :key="data.id">
       <EpisodeComponent :data="data" />
     </div>

@@ -53,7 +53,7 @@ const userStore = useUserStore();
     <div class="wrapper">
       <div class=banner>
         <img src="@/assets/images/selly_banner_w_slogan.png" height="100px" />
-        <!-- <div>Much of our data comes from <a href="imdb.com">IMDB</a></div> -->
+        <div class="support">Many details are from <a href="https://themoviedb.org" target="_blank">TheMovieDB</a>. Please visit!</div>
         <div class="login">
           <!-- <div> logged in: {{ theUser.isLoggedIn() }}</div> -->
 
@@ -107,8 +107,21 @@ header {
     position: relative;
     display: inline-block;
   }
+  
+  .support {
+    position: absolute;
+    display: inline-block;
+    padding: 10px 0 0 10px;
+    width: 200px;
+    top: 0;
 
-  .login{
+    a {
+      padding: 0;
+    }
+    /* margin-bottom: 10px; */
+
+  }
+  .login {
     position: absolute;
     display: inline-block;
     /* width: 200px; */
