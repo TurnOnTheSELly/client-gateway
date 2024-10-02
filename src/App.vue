@@ -1,8 +1,49 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue';
+import { RouterLink, RouterView } from 'vue-router';
 import { useUserStore } from './stores/theUser';
+import { GoogleLogin, decodeCredential, googleLogout} from 'vue3-google-login';
 
 const userStore = useUserStore();
+
+// start login
+  const tv_service_root_url = import.meta.env.VITE_TV_SERVICE_URL
+
+  const theUser = useUserStore();
+  let loggedIn = ref(false);
+
+
+  const checkLogin = (name, email, sub, service) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({userName: name, userEmail: email, googleSub: sub, type: service})
+    };
+    fetch(tv_service_root_url + "api/v1/users", requestOptions)
+      .then(response => response.json())
+      .then(data => (
+        theUser.setInfo(data.id, data.name, data.email, data.googleSub, data.username, data.seriesCreator, data.seasonCreator, data.episodeCreator, data.role)
+      ));
+  }
+
+  function logout(){
+    googleLogout()
+    loggedIn.value = false
+    theUser.$reset()
+    console.log("hope this worked")
+    console.log(theUser.userName)
+  }
+
+  const callback = (response) => {
+    console.log(theUser.isLoggedIn)
+    let creds = decodeCredential(response.credential)
+    // localStorage.setItem("name", creds.name)
+    checkLogin(creds.name, creds.email, creds.sub, "google")
+    console.log(theUser.isLoggedIn)
+
+    console.log(creds)
+  }
+// end login
 </script>
 
 <template>
@@ -12,6 +53,18 @@ const userStore = useUserStore();
     <div class="wrapper">
       <div class=banner>
         <img src="@/assets/images/selly_banner_w_slogan.png" height="100px" />
+        <!-- <div>Much of our data comes from <a href="imdb.com">IMDB</a></div> -->
+        <div class="login">
+          <!-- <div> logged in: {{ theUser.isLoggedIn() }}</div> -->
+
+          <div v-if="theUser.isLoggedIn()" class="login">
+            <button @click="logout" >Logout</button>
+          </div>
+          <div v-else class="loggedIn">
+            <GoogleLogin :callback="callback" />
+          </div>
+        </div>
+
       </div>
 
       <nav>
@@ -39,14 +92,28 @@ const userStore = useUserStore();
 
 header {
   line-height: 1.5;
-  display: inline
+  display: inline;
+  width: 100%;
   /* max-height: 100vh; */
 }
 
 .banner {
   position: relative;
+  width: 100%;
   top: 15px;
   left: 0px;
+
+  img {
+    position: relative;
+    display: inline-block;
+  }
+
+  .login{
+    position: absolute;
+    display: inline-block;
+    /* width: 200px; */
+    right: 0;
+  }
 }
 
 .logo {
