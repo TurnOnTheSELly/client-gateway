@@ -53,7 +53,10 @@ const userStore = useUserStore();
     <div class="wrapper">
       <div class=banner>
         <img src="@/assets/images/selly_banner_w_slogan.png" height="100px" />
-        <div class="support">Many details are from <a href="https://themoviedb.org" target="_blank">TheMovieDB</a>. Please visit!</div>
+        <div class="support"> 
+          <a href="https://themoviedb.org" target="_blank"><img src="/tmdb.svg"  width="120px"> </a>
+          <div >Many details are from <a href="https://themoviedb.org" target="_blank">TheMovieDB</a>. Please visit!</div>
+        </div>
         <div class="login">
           <!-- <div> logged in: {{ theUser.isLoggedIn() }}</div> -->
 
