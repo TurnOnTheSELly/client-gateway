@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
+// import LoginView from '../views/LoginView.vue'
+import BuildSnowmanView from '@/views/games/BuildSnowmanView.vue'
 import CreateSeriesView from '../views/CreateSeriesView.vue'
 import CreateSeasonView from '@/views/CreateSeasonView.vue'
 import CreateEpisodeView from '@/views/CreateEpisodeView.vue'
@@ -28,10 +29,15 @@ const router = createRouter({
       name: 'glossary',
       component: GlossaryView
     },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   component: LoginView
+    // },
     {
-      path: '/login',
-      name: 'login',
-      component: LoginView
+      path: '/games/buildsnowman',
+      name: 'buildsnowman',
+      component: BuildSnowmanView
     },
     {
       path: '/createSeries',

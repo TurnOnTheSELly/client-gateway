@@ -74,8 +74,8 @@ const userStore = useUserStore();
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink> 
         <RouterLink to="/glossary">Glossary</RouterLink> 
-        <RouterLink to="/login">Login</RouterLink>
-        <!-- <RouterLink to="/games_teacher">Games (teacher)</RouterLink> -->
+        <RouterLink to="/games/buildsnowman">Build a Snowman</RouterLink>
+        <!-- <RouterLink to="/login">Login</RouterLink> -->
         <br><br><p>
           <RouterLink v-if= "userStore.isSeriesCreator" to="/createSeries">Create Shows</RouterLink>
           <RouterLink v-if= "userStore.isSeasonCreator" to="/createSeason">Create Seasons</RouterLink>

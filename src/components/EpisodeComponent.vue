@@ -132,7 +132,17 @@ div.body {
 
     div.list {
       height: 90px;
-      overflow: scroll;
+      overflow-x: scroll;
+      overflow-y: scroll;
+    }
+    
+    div.list::-webkit-scrollbar {
+      width:5px;
+      height: 5px;
+    
+    }
+    div.list::-webkit-scrollbar-thumb {
+      background: var(--dark-green); /* Scrollbar thumb (the handle) */
     }
   }
 

@@ -125,7 +125,7 @@ div.body {
 
     div.list {
       /* height: 90px; */
-      overflow: scroll;
+      overflow: hidden;
     }
   }
 
