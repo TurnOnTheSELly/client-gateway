@@ -1,7 +1,7 @@
 <script setup>
   import { computed } from 'vue'
 
-  defineProps ({
+  const props = defineProps ({
     status: {type: String, default: '' },
     word: { type: String, default: '' }
   })
@@ -18,10 +18,10 @@
 </script>
 
 <template>
-  <div class="popup-container" id="popup-container">
+  <div v-if="finalMessage" class="popup-container" id="popup-container">
     <div class="popup">
-      <h2 id="final-message"></h2>
-      <h3 id="final-message-reveal-word"></h3>
+      <h2>{{ finalMessage }}</h2>
+      <!-- <h3></h3> -->
       <button id="play-button" @click="reset">Play Again</button>
     </div>
   </div>

@@ -5,7 +5,7 @@
 <template>
   <div class="incorrect-letters-container">
     <div class="incorrect-letters">
-      <p v-show="incorrectLetters.length > 0">Incorrect</p>
+      <span v-show="incorrectLetters.length > 0">Incorrect: </span>
       <span v-for="(letter, i) in incorrectLetters" :key="letter">
         {{ letter }}
         {{ i === incorrectLetters.length - 1 ? '' : ', ' }}
