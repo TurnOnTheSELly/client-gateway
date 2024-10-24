@@ -10,25 +10,37 @@
 
   const words = [
     "martin luther king jr.",
-    // "Balance screen time with kindness in mind",
-    // "In world where you can be anything be kind",
-    // "Kindness begets kindness",
-    // "Open-minded",
-    // "Mahatma Gandhi",
-    // "Malala Yousafzai",
-    // "Green Energy",
-    // "Solar Panels on a house",
-    // "Renewable energy",
-    // "Sharing is caring",
-    // "Take care of yourself",
-    // "Recycle, Reuse, Repurpose, Reduce",
-    // "Geothermal Heat Pump",
-    // "Waste not, want not",
+    "balance screen time with kindness in mind",
+    "in world where you can be anything be kind",
+    "kindness begets kindness",
+    "open-minded",
+    "mahatma gandhi inspired many people",
+    "malala yousafzai help people access school",
+    "green energy",
+    "solar panels on a house",
+    "renewable energy",
+    "sharing is caring",
+    "take care of yourself",
+    "recycle, reuse, repurpose, reduce",
+    "geothermal heat pump",
+    "waste not, want not",
   ]
+
+  const supplied = ref(false)
+  const suppliedWord = ref('')
+  const first = ref(true)
+
   const randomWord = () => words[Math.floor(Math.random() * words.length)]
   const symbols = [".", ",", "-", "'", " ", "/" ]
 
-  const word = ref(randomWord())
+  const word = computed(() =>{
+    if (supplied.value) {
+      return suppliedWord.value
+    } else {
+      return randomWord()
+    }
+  });
+
   const guessedLetters = ref([])
 
   const letters = computed(() => word.value.split(''))
@@ -39,19 +51,14 @@
     guessedLetters.value.filter(letter => letters.value.includes(letter))
   )
 
-  
   const step = computed(() =>{
     let uniq = "";
-    let rando = randomWord().toLowerCase().replace(/[.,\-\' /]/g, '');
-
+    let rando = word.value.toLowerCase().replace(/[.,\-\' /]/g, '');
     for (let i = 0; i < rando.length; i++) {
       if (uniq.includes(rando[i]) === false) {
-
         uniq += rando[i];
       }
     }
-    
-
     return 26 / uniq.length ;
     }
   )
@@ -59,8 +66,6 @@
   const points = computed(() => {
     let uniq = [];
     const cleanedLetters = correctLetters.value.filter(letter => !symbols.includes(letter));
-   
-
     for (let i = 0; i < cleanedLetters.length; i++ ) {
       if (!uniq.includes(cleanedLetters[i])) {
         uniq.push(cleanedLetters[i]);
@@ -70,6 +75,9 @@
   })
 
   const status = computed(() => {
+    if (first.value === true) {
+      return 'start'
+    }
     if (points.value >= 26){
       // console.log("WIN")
       return 'win'
@@ -78,8 +86,18 @@
   })
   
   const reset = () => {
+    first.value = false
+    supplied.value = true
+    supplied.value = false
     guessedLetters.value = []
-    word.value = randomWord()
+    randomWord()
+  }
+  
+  const supply = (message) => {
+    first.value = false
+    guessedLetters.value =[]
+    supplied.value = true
+    suppliedWord.value = message
   }
 
   const notification = ref(false)
@@ -116,7 +134,7 @@
       <IncorrectLetters :incorrectLetters="incorrectLetters" />
     </div>
   </div>
-  <Popup :status="status" :word="word" @reset="reset" />
+  <Popup :status="status" :word="word" @reset="reset" @supply="supply"/>
   <Notification :show="notification" />
 
   <!-- <p> {{ points }}</p>
@@ -137,7 +155,7 @@ body {
   /* display: flex; */
   /* flex-direction: column; */
   align-items: center;
-  /* height: 300vh; */
+  height: 300vh;
   margin: 0;
   /* overflow: hidden; */
 }
@@ -151,10 +169,10 @@ h1 {
   position: relative;
   margin: auto;
   height: 800px;
-  width: 450px;
+  width: 800px;
 }
 
-.header-contianer {
+.header-container {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -171,6 +189,7 @@ h1 {
   margin-bottom: 80px;
   margin-left: auto;
   margin-right: auto;
+  width: fit-content;
 }
 
 .figure-part {
@@ -198,6 +217,7 @@ h1 {
   width:fit-content;
   display: flex;
   position: relative;
+  /* right: 10px; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -274,20 +294,24 @@ h1 {
   outline: 0;
 }
 
+/* .notificition-container */
 .notification-container {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0, 0.3);
+  /* color: white; */
   border-radius: 10px 10px 0 0;
   padding: 15px 20px;
   position: absolute;
-  bottom: -50px;
+  bottom: -500px;
   transition: transform 0.3s ease-in-out;
 }
 
 .notification-container p {
+  color: white;
   margin: 0;
 }
 
 .notification-container.show {
-  transform: translateY(-50px);
+  /* color: white; */
+  transform: translateY(-500px);
 }
 </style>
