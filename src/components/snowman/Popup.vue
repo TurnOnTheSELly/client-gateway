@@ -24,7 +24,7 @@
 
   const reset = () => { emit('reset'); };
   const supply = () => { 
-    emit('supply', phrase.value); 
+    emit('supply', phrase.value.toLowerCase()); 
     form.value = false
   };
 
