@@ -203,6 +203,7 @@ h1 {
   display: flex;
   /* flex-direction: column; */
   text-align: right;
+  font-family: 'Comic Sans MS'
 }
 
 .incorrect-letter-container p {
@@ -265,7 +266,7 @@ h1 {
   display: flex;
   /* display: none; */
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   z-index: 6;
 }
 
