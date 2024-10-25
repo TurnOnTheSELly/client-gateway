@@ -133,8 +133,8 @@
     <div class="incorrect-letter-container">
       <IncorrectLetters :incorrectLetters="incorrectLetters" />
     </div>
+    <Popup :status="status" :word="word" @reset="reset" @supply="supply"/>
   </div>
-  <Popup :status="status" :word="word" @reset="reset" @supply="supply"/>
   <Notification :show="notification" />
 
   <!-- <p> {{ points }}</p>
@@ -266,6 +266,7 @@ h1 {
   /* display: none; */
   align-items: center;
   justify-content: center;
+  z-index: 6;
 }
 
 .popup {

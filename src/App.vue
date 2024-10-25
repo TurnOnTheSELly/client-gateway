@@ -97,6 +97,8 @@ header {
   line-height: 1.5;
   display: inline;
   width: 100%;
+  position: relative;
+  z-index: 8;
   /* max-height: 100vh; */
 }
 
