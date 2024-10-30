@@ -112,7 +112,8 @@ div.body {
   height:auto;
   background-color: var(--mindaro);
   border-radius: 30px;
-  margin: 10px 2px;
+  margin-left: auto;
+  margin-top: 10px;
   
   div.visible { 
     /* display: inline; */

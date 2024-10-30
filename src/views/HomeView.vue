@@ -196,8 +196,9 @@ onMounted(findAttributesIf)
 
 
   <body>
-    
-    <HeaderEpisodeComponent  />
+    <header class="episode-component-header">
+      <HeaderEpisodeComponent  />
+    </header>
     
     <div class="episode-component" v-for="data in searchDatas" :key="data.id">
       <EpisodeComponent :data="data" />
@@ -211,6 +212,11 @@ onMounted(findAttributesIf)
 div.episode-component {
   height: auto;
   width: auto;
+  margin-left: auto;
+}
+
+header.episode-component-header {
+  margin-left: auto;
 }
 
 div.multi {

@@ -102,7 +102,7 @@ div.body {
   height:auto;
   background-color: var(--dark-green);
   border-radius: 30px;
-  margin: 10px 2px;
+  margin-left: auto;
   
   div.visible { 
     /* display: inline; */
