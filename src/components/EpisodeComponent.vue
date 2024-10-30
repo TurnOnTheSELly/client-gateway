@@ -32,7 +32,7 @@
         </div>
         
         <div id="season-num">
-          season {{ data.season_num }}
+          Season: {{ data.season_num }} Episode: {{ data.episode_num }}
         </div>
       </div>
 

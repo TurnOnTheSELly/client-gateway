@@ -32,7 +32,7 @@
         </div>
         
         <div id="season-num">
-          Season:
+          Season/Episode:
         </div>
       </div>
 
