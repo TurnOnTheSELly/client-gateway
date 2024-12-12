@@ -15,6 +15,7 @@
 <template>
   <div class="body">
     <div class="visible" @click="isOpen = !isOpen">
+
         
       <div class="column" id="series-data">
         <div id="series-name">
@@ -54,7 +55,7 @@
       </div>
  
       <div class="list column" id="sels2">
-        <li v-for="(sel, i) in data.sel2?.split('| ')" :key="`${sels2}-${i}`">
+        <li v-for="(sel, i) in data.sels2?.split('| ')" :key="`${sels2}-${i}`">
           {{ sel }}
         </li>
       </div>
