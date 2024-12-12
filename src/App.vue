@@ -114,11 +114,12 @@ header {
   }
   
   .support {
-    position: absolute;
+    position: relative;
     display: inline-block;
     padding: 10px 0 0 10px;
     width: 200px;
-    top: 0;
+    /* top: 100px; */
+    /* left: 10px; */
 
     a {
       padding: 0;
@@ -140,10 +141,12 @@ header {
 }
 
 nav {
+  /* position: absolute; */
   width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
+  /* top: 300px; */
 }
 
 nav a.router-link-exact-active {
@@ -190,5 +193,38 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+  .banner {
+    position: relative;
+    width: 100%;
+    top: 15px;
+    left: 0px;
+
+    img {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .support {
+      position: absolute;
+      display: inline-block;
+      padding: 10px 0 0 10px;
+      width: 200px;
+      top: 0;
+
+      a {
+        padding: 0;
+      }
+      /* margin-bottom: 10px; */
+
+    }
+    .login {
+      position: absolute;
+      display: inline-block;
+      /* width: 200px; */
+      right: 0;
+    }
+  }
 }
+
+
 </style>

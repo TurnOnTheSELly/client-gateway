@@ -229,4 +229,15 @@ div.search-criteria{
   display: inline-block;
   width: max-content;
 }
+
+@media only screen and (max-width: 600px) {
+
+div.search-criteria{
+  display: block;
+  padding: 1px;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+}
 </style>

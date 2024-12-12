@@ -214,6 +214,51 @@ div.body {
 #heads-ups {
   left: 1400px;
 }
+@media only screen and (max-width: 600px) {
+  div.body {
+    width: 500px;
+    height: 160px;
+  }
+
+  #series-data {
+  left: 20px;
+  }
+
+  #epi-season {
+    left: 150px;
+  }
+
+  #time {
+    /* top: 60px; */
+    left: 400px;
+  }
+  
+  #sels1 {
+    top: 70px;
+    left: 40px;
+  }
+  
+  #sels2 {
+    top: 70px;
+    left: 280px;
+  }
+  
+  #situations {
+    top: 100px;
+    left: 40px;
+  }
+  
+  #settings {
+    top: 100px;
+    left: 280px;
+  }
+
+  #heads-ups {
+    top: 130px;
+    left: 40px;
+  }
+
+}
  
 
 
