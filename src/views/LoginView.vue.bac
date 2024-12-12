@@ -45,24 +45,16 @@ const callback = (response) => {
 </script>
 
 <template>
-        <!-- <p> role: {{ theUser }} </p> -->
-      <!-- <p> sub: {{ theUser.userSub }} </p> -->
   <div> logged in: {{ theUser.isLoggedIn() }}</div>
-  <!-- <p>The name is also: {{ theUser.userName}}</p> -->
-    <div v-if="theUser.isLoggedIn()" class="login">
-      <button @click="logout" >Logout</button>
 
-      <!-- <h1>This is a view page</h1> -->
-      <!-- <p> role: {{ theUser.role }}</p> -->
-      <!-- <p> sub: {{  theUser.googleSub }}</p> -->
+  <div v-if="theUser.isLoggedIn()" class="login">
+    <button @click="logout" >Logout</button>
+  </div>
+  <div v-else class="loggedIn">
+    <GoogleLogin :callback="callback" />
+  </div>
 
-
-    </div>
-    <div v-else class="loggedIn">
-      <GoogleLogin :callback="callback" />
-    </div>
-
-  </template>
+</template>
   
   <style>
 

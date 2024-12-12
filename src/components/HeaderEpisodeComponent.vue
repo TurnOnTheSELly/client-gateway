@@ -2,13 +2,13 @@
   import { ref } from 'vue';
 
 
-  defineProps (['data'])
+  // defineProps (['data'])
 
-  const isOpen = ref(false)
+  // const isOpen = ref(false)
   
-  function getImgUrl(subUrl) {
-    return `https://image.tmdb.org/t/p/original${subUrl}`
-  }
+  // function getImgUrl(subUrl) {
+  //   return `https://image.tmdb.org/t/p/original${subUrl}`
+  // }
 
 </script>
 
@@ -18,66 +18,56 @@
         
       <div class="column" id="series-data">
         <div id="series-name">
-          {{ data.series_name }}
+          Series Name:
         </div>
         
         <div id="rating">
-          ({{ data.rating }})
+          Rating:
         </div>
       </div> 
      
       <div class="column" id="epi-season">
         <div id="episode-name">
-          {{ data.episode_name }}
+          Episode Name:
         </div>
         
         <div id="season-num">
-          Season: {{ data.season_num }} Episode: {{ data.episode_num }}
+          Season/Episode:
         </div>
       </div>
 
 
       <div class="column" id="time">
         <div id="runtime">
-          {{ data.runtime }} minutes
+          Runtime:
         </div>
   
         <div id="set">
-          {{ data.set }}
+          Set:
         </div>
       </div>
  
       <div class="list column" id="sels1">
-        <li v-for="(sel, i) in data.sels1?.split('| ')" :key="`${sels1}-${i}`">
-          {{ sel }}
-        </li>
+        SELs
       </div>
  
       <div class="list column" id="sels2">
-        <li v-for="(sel, i) in data.sel2?.split('| ')" :key="`${sels2}-${i}`">
-          {{ sel }}
-        </li>
+        Secondary SELs
       </div>
  
       <div class="list column" id="situations">
-        <li v-for="(situation, i) in data.situations?.split('| ')" :key="`${situations}-${i}`">
-          {{ situation }}
-        </li>
+        Situations
       </div>
  
       <div class="list column" id="settings">
-        <li v-for="(setting, i) in data.settings?.split('| ')" :key="`${settingsl}-${i}`">
-          {{ setting }}
-        </li>
+        Settings
       </div>
  
       <div class="list column" id="heads-ups">
-        <li v-for="(headsUp, i) in data.heads_ups?.split('| ')" :key="`${heads_ups}-${i}`">
-          {{ headsUp }}
-        </li>
+        HeadsUps
       </div>
  
-    </div>
+    <!-- </div>
     <div class="hidden" v-if="isOpen">
 
       <h2> {{ data.episode_name }} of {{ data.series_name}} season: {{ data.season_num }} </h2>
@@ -98,7 +88,7 @@
         <div id="air-date">
           Air Date(yyyy-mm-dd): {{ data.air_date }}
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -106,22 +96,24 @@
 
 
 
-<style>
+<style scoped>
 div.body {
   width: 1600px;
   height:auto;
-  background-color: var(--mindaro);
+  background-color: var(--dark-green);
   border-radius: 30px;
   margin-left: auto;
-  margin-top: 10px;
   
   div.visible { 
     /* display: inline; */
-    background-color: var(--mindaro);
-    color: var(--dark-green);
+    /* background-color: var(--mindaro);
+    color: var(--dark-green); */
+    background-color: var(--dark-green);
+    color: white;
+    font-weight: bold;
     border-radius: 30px;
     padding: 10px;
-    height: 100px;
+    height: 70px;
     /* overflow: scroll; */
     position: relative;
 
@@ -132,18 +124,8 @@ div.body {
     }
 
     div.list {
-      height: 90px;
-      overflow-x: scroll;
-      overflow-y: scroll;
-    }
-    
-    div.list::-webkit-scrollbar {
-      width:5px;
-      height: 5px;
-    
-    }
-    div.list::-webkit-scrollbar-thumb {
-      background: var(--dark-green); /* Scrollbar thumb (the handle) */
+      /* height: 90px; */
+      overflow: hidden;
     }
   }
 
