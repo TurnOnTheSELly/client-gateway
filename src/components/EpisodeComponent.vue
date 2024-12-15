@@ -236,6 +236,7 @@ div.body {
 
 @media only screen and (max-width: 600px) {
   div.body {
+    position:relative;
     width: 500px;
     height: 280px;
   
@@ -245,7 +246,7 @@ div.body {
   }
 
   #series-data {
-  left: 20px;
+    left: 20px;
   }
 
   #epi-season {

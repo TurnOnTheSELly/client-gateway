@@ -71,6 +71,13 @@ async function createSearch() {
     searchDatas.value = data
 }
 
+function addTag(newTag) {
+  return {
+    name: newTag,
+    id: `new-${Math.random().toString(36).substr(2, 9)}`
+  }
+}
+
 // onMounted(fetchData)
 onMounted(findAttributesIf)
 
@@ -92,17 +99,35 @@ onMounted(findAttributesIf)
       :close-on-select="false"
       :clear-on-select="false"
       :preserve-search="true"
+      :taggable="true"
+      @tag="addTag" 
       placeholder="Pick some"
       label="name"
       track-by="id" 
       :preselect-first="false">
       <template #selection="{ values, search, isOpen }">
-          <span class="multiselect__single"
+          <!-- <span class="multiselect__single"
                 v-if="values.length"
-                v-show="!isOpen">{{ values.length }} options selected</span>
+                v-show="!isOpen">{{ values.length }} options selected</span> -->
         </template>
       </Multiselect>
   </div>
+  <!-- <div><label class="typo__label">Tagging</label>
+    <multiselect 
+      v-model="value" 
+      tag-placeholder="Add this as new tag" 
+      placeholder="Search or add a tag" 
+      label="name"
+      track-by="code"
+      :options="options" 
+      :multiple="true" 
+      :taggable="true" 
+      @tag="addTag">
+                </multiselect>
+    <pre class="language-json"><code>{{ value }}</code></pre>
+  </div> -->
+
+
   
   <div class="search-criteria">
     <label>Select  SELs (multiple):</label>
@@ -117,10 +142,12 @@ onMounted(findAttributesIf)
       label="name"
       track-by="id" 
       :preselect-first="false">
+      :taggable="true"
+      @tag="addTag" 
       <template #selection="{ values, search, isOpen }">
-          <span class="multiselect__single"
+          <!-- <span class="multiselect__single"
                 v-if="values.length"
-                v-show="!isOpen">{{ values.length }} options selected</span>
+                v-show="!isOpen">{{ values.length }} options selected</span> -->
         </template>
       </Multiselect>
   </div>
@@ -138,10 +165,12 @@ onMounted(findAttributesIf)
       label="name"
       track-by="id"
       :preselect-first="false">
+      :taggable="true"
+      @tag="addTag" 
       <template #selection="{ values, search, isOpen }">
-          <span class="multiselect__single"
+          <!-- <span class="multiselect__single"
                 v-if="values.length"
-                v-show="!isOpen">{{ values.length }} options selected</span>
+                v-show="!isOpen">{{ values.length }} options selected</span> -->
         </template>
       </Multiselect>
   </div>
@@ -159,10 +188,12 @@ onMounted(findAttributesIf)
       label="name"
       track-by="id" 
       :preselect-first="false">
+      :taggable="true"
+      @tag="addTag" 
       <template #selection="{ values, search, isOpen }">
-          <span class="multiselect__single"
+          <!-- <span class="multiselect__single"
                 v-if="values.length"
-                v-show="!isOpen">{{ values.length }} options selected</span>
+                v-show="!isOpen">{{ values.length }} options selected</span> -->
         </template>
       </Multiselect>
   </div>
@@ -180,10 +211,12 @@ onMounted(findAttributesIf)
       label="name"
       track-by="id" 
       :preselect-first="false">
+      :taggable="true"
+      @tag="addTag" 
       <template #selection="{ values, search, isOpen }">
-          <span class="multiselect__single"
+          <!-- <span class="multiselect__single"
                 v-if="values.length"
-                v-show="!isOpen">{{ values.length }} options selected</span>
+                v-show="!isOpen">{{ values.length }} options selected</span> -->
         </template>
       </Multiselect>
   </div>
@@ -235,8 +268,8 @@ div.search-criteria{
 div.search-criteria{
   display: block;
   padding: 1px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
 }
   
 }
