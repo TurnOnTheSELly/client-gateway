@@ -84,7 +84,7 @@
       <h2> {{ data.episode_name }} of {{ data.series_name}} season: {{ data.season_num }} </h2>
 
       <div id="image">
-        <img :src="getImgUrl(data.poster_path)" width="150px">
+        <img :src="getImgUrl(data.poster_path)" style="max-width: 100%; height: auto;">
       </div>
 
       <div id="details">
@@ -238,11 +238,33 @@ div.body {
   div.body {
     position:relative;
     width: 500px;
-    height: 280px;
+    height:auto;
   
     /* div.visible {
       height: fit-content;
     } */
+    div.visible {
+      height: 300px;
+    }
+
+    div.hidden {
+      height: 450px;
+      overflow: scroll;
+    }
+  }
+
+  #image {
+    width: 100px;
+    img {
+      border-bottom: 0px;
+    }
+
+  }
+  
+  #details {
+    width: 300px;
+    margin: 10px 0 0 10px;
+    height: 300px;
   }
 
   #series-data {
